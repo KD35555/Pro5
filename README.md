@@ -134,7 +134,21 @@ streamlit run app.py
 * **模型架构**: DINOv2 (ViT-Base)
 
 ---
+### ⏱️ 关于运行耗时的重要说明 (Important Note on Runtime)
 
+本项目支持两种运行模式，方便快速验证：
+
+1.  **快速演示模式 (Demo Mode)**:
+    * 如果您**跳过 Step 1** (不下载大图库)，直接运行 `python step2_build_index.py`。
+    * 系统会自动检测并使用仓库自带的 `demo_data/` (约 20 张图)。
+    * **耗时**: < 5秒。适合助教/老师快速检查代码逻辑。
+
+2.  **完整数据模式 (Full Dataset)**:
+    * 如果您**运行 Step 1** 下载了完整图库 (`gallery/`)。
+    * `step2_build_index.py` 将为 10,000+ 张图片建立索引。
+    * **耗时**: 约 20-25 分钟 (CPU 环境)。
+
+---
 ## 🧪 性能与验证 (Performance & Verification)
 
 我们将 NumPy 实现的输出与官方 PyTorch 模型进行了严格对比，验证结果如下：
@@ -144,6 +158,7 @@ streamlit run app.py
 | **平均绝对误差 (MAE)** | `< 1e-15` (数学上完全等价) |
 | **推理时间 (CPU)** | `~0.15s` / 每张图 |
 | **检索速度** | `< 0.01s` (针对 10k 图库) |
+
 
 
 
